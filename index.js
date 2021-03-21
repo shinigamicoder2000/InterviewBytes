@@ -1,17 +1,16 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-
+const mongoose=require('./config/mongoose');
 const ejs=require('ejs');
 const app = express();
 const port = process.env.LOCAL_PORT;//when deployin to server we will change it to 80
 const expressLayouts = require("express-ejs-layouts");
 console.log('port is ',process.env.LOCAL_PORT);
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 
 app.use(express.static("./assets"));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 
 
@@ -29,10 +28,24 @@ app.use("/", require("./routes"));
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
-app.listen(port || 8000, function (err) {
+app.listen(port || 8000, async function (err) {
   if (err) {
     return console.log(`Error in running the server: ${err}`);
   }
-
+  // const Experience=require('./models/experience');
+  // const exp=new Experience({
+  //   username:"blah",
+  //   experience:"blah",
+  //   company:"blah blah",
+  //   year:"2018",
+  // });
+  // try{
+  // const exper=await exp.save();
+  // console.log(exper);
+  // }
+  // catch(err)
+  // {
+  //   console.log(err);
+  // }
   return console.log(`Server fired up on port: ${port}`);
 });
