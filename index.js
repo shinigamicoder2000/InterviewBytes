@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose=require('./config/mongoose');
 const ejs=require('ejs');
 const app = express();
+const methodOverride=require('method-override');
 const port = process.env.LOCAL_PORT;//when deployin to server we will change it to 80
 
 console.log('port is ',process.env.LOCAL_PORT);
@@ -26,6 +27,10 @@ app.use("/", require("./routes"));
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
+
+app.use(methodOverride("_method"));//_method is query parameter to handle requests
+
+app.use("/", require("./routes"));
 app.listen(port || 8000, async function (err) {
   if (err) {
     return console.log(`Error in running the server: ${err}`);

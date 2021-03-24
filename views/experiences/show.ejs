@@ -8,5 +8,13 @@
 </head>
 <body>
     <h1>   <%=experience.username %></h1>
+    <footer>
+        <a href="/experiences" >Back to Experiences</a>
+        <a href="/experiences/<%=experience._id %>/edit" >edit</a>
+        <form action="/experiences/<%=experience._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
+        </form>
+        
+    </footer>
 </body>
 </html>

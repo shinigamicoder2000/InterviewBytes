@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=title %></title>
+  </head>
+  <body>
+      <h1>Edit Campground</h1>
+    <form action="/experiences/<%=experience._id %>?_method=PUT" method="POST">
+      <div>
+        <label for="username">username</label>
+        <input type="text" id="username" name="Experience[username]" value="<%=experience.username %>"/>
+      </div>
+      <div>
+        <label for="company">company</label>
+        <input type="text" id="company" name="Experience[company]" value="<%=experience.company %>"/>
+      </div>
+      <div>
+        <label for="year">year</label>
+        <input type="text" id="year" name="Experience[year]" value="<%=experience.year %>"/>
+      </div>
+      <div>
+        <label for="experience">experience</label>
+        <textarea id="experience" name="Experience[experience]"><%=experience.experience %></textarea>
+      </div>
+      <button type="submit">Submit</button>
+
+    </form>
+
+    <a href="experiences/<%=experience._id %>" >Back to Experience</a>
+  </body>
+</html>
