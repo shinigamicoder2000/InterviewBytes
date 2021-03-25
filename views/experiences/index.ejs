@@ -3,7 +3,20 @@
 
         <ul>
             <% for(exp of experiences) { %>
-                <a href="/experiences/<%=exp._id %>"><%=exp.username %></a>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><%=exp.username %></h5>
+                        <p class="card-text"><%=exp.experience %></p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                <%=exp.company %>
+                            </small>
+                        </p>
+                        <a href="/experiences/<%=exp._id%>" class="btn btn-primary">Go To Experience</a>
+
+                    </div>
+                </div>
+                <!-- <a href="/experiences/<%=exp._id %>"><%=exp.username %> Interview Experience </a> -->
                 <%}%>
         </ul>
     
