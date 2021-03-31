@@ -4,6 +4,7 @@ const ejs=require('ejs');
 const app = express();
 const methodOverride=require('method-override');
 const ejsMate=require('ejs-mate');
+const ExpressError=require('./util/ExpressError');
 const port = process.env.LOCAL_PORT;//when deployin to server we will change it to 80
 
 console.log('port is ',process.env.LOCAL_PORT);
@@ -33,12 +34,16 @@ app.set("views", "./views");
 app.use(methodOverride("_method"));//_method is query parameter to handle requests
 
 app.use("/", require("./routes"));
-app.use((req,res)=>{
-  res.send("NOT FOUND");
+app.all('*',(req,res,next)=>{
+   next(new ExpressError(404,"Page Not Found"));
 });
 app.use((err,req,res,next)=>{
-
-   res.send("Something Went Wrong");
+  const {statusCode=500}=err;
+  if(!err.message)
+  {
+    err.message="Oh Something went wrong";
+  }
+   res.status(statusCode).render('error',{title:'Error',err:err});
 
 })
 app.listen(port || 8000, async function (err) {

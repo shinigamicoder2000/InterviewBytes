@@ -1,4 +1,5 @@
 const Experience=require('../models/experience');
+const ExpressError = require('../util/ExpressError');
 module.exports.getAllExperiences=async (req,res)=>{
     const experiences=await Experience.find({});
     res.render('experiences/index',{title:"All",experiences:experiences});
@@ -16,6 +17,10 @@ module.exports.getCreateExperience=(req,res)=>{
  }
  module.exports.postCreateExperience=async (req,res)=>{
    console.log(req.body.username);
+   if(!req.body.experience)
+   {
+       throw new ExpressError(500,"Invalid form data");
+   }
     const experience=new Experience(req.body.Experience);
     await experience.save();  
 
