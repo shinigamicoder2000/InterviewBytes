@@ -3,24 +3,36 @@
     <div class="row">
       <h1 class="text-center">New experience</h1>
       <div class="col-6 offset-3">
-          <form action="/experiences/create" method="POST">
+          <form action="/experiences/create" method="POST" class="validated-form" novalidate>
             <div class="mb-3">
               <label class="form-label" for="title">Username</label>
-              <input class="form-control" type="text" id="title" name="Experience[username]">
+              <input class="form-control" type="text" id="title" name="Experience[username]" required>
+              <div class="valid-feedback">
+                  Looks Good
+              </div>
           </div>
               <div class="mb-3">
                   <label class="form-label" for="company">Company</label>
-                  <input class="form-control" type="text" id="company" name="Experience[company]">
+                  <input class="form-control" type="text" id="company" name="Experience[company]" required>
+                  <div class="valid-feedback">
+                    Looks Good
+                </div>
               </div>
               <div class="mb-3">
                   <label class="form-label" for="year">Year</label>
-                  <input class="form-control" type="text" id="year" name="Experience[year]">
+                  <input class="form-control" type="text" id="year" name="Experience[year]" required>
+                  <div class="valid-feedback">
+                    Looks Good
+                </div>
               </div>
             
   
               <div class="mb-3">
                   <label class="form-label" for="description">Description</label>
-                  <textarea class="form-control" type="text" id="description" name="Experience[experience]"></textarea>
+                  <textarea class="form-control" type="text" id="description" name="Experience[experience]" required></textarea>
+                  <div class="valid-feedback">
+                    Looks Good
+                </div>
               </div>
               <div class="mb-3">
                   <button class="btn btn-success">Add experience</button>
@@ -29,3 +41,25 @@
           <a href="/experiences">All experiences</a>
       </div>
   </div>
+
+  <script>
+      (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.validated-form')
+
+  // Loop over them and prevent submission
+  Array.from(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+  </script>
