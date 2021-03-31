@@ -35,6 +35,11 @@ app.use(methodOverride("_method"));//_method is query parameter to handle reques
 app.use("/", require("./routes"));
 app.use((req,res)=>{
   res.send("NOT FOUND");
+});
+app.use((err,req,res,next)=>{
+
+   res.send("Something Went Wrong");
+
 })
 app.listen(port || 8000, async function (err) {
   if (err) {
