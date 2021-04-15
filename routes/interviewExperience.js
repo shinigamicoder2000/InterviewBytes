@@ -7,24 +7,24 @@ const { experienceSchema } = require("../schemas.js");
 const validateExperience = (req, res, next) => {
   const { error } = experienceSchema.validate(req.body);
   if (error) {
-    const msg = error.details.map((el) => el.message).join(",");
+    const msg = error.details.map((el) => el.message).join(",,,");
     throw new ExpressError(400, msg);
   } else {
     next();
   }
 };
 const multer  = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const {storage}=require('../cloudinary');
+const upload = multer({ storage })
 router.get("/", catchAsync(interviewExperienceController.getAllExperiences));
 router.get("/create", interviewExperienceController.getCreateExperience);
 router.post(
   "/create",
-  // validateExperience,
-  // catchAsync(interviewExperienceController.postCreateExperience)
   upload.single('resume'),
-  (req,res)=>{
-    res.send(req.file);
-  }
+  validateExperience,
+  
+  catchAsync(interviewExperienceController.postCreateExperience)
+  
 );
 router.get("/:id", catchAsync(interviewExperienceController.getExperience));
 router.get(

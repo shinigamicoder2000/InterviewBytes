@@ -6,5 +6,6 @@ module.exports.experienceSchema = Joi.object({
     company: Joi.string().required(),
     year: Joi.string().required(),
     experience: Joi.string().required(),
+  
   }).required(),
 });

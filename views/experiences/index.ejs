@@ -1,16 +1,22 @@
 <% layout('layouts/boilerplate.ejs') -%>
-    <h1>All experiences</h1>
+<h1>All experiences</h1>
+<div class="container" style="margin:40px">
+<form class="form-inline ">
+    <i class="fas fa-search" aria-hidden="true"></i>
+    <input class="form-control form-control-sm ml-3 w-75" id="inp" onkeyup="myFunction()" type="text" placeholder="Search By Company" aria-label="Search">
+  </form>
+</div>
 
-        <ul>
+        <ul id="myUL" >
             <% for(exp of experiences) { %>
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"><%=exp.username %></h5>
                         <p class="card-text"><%=exp.experience %></p>
                         <p class="card-text">
-                            <small class="text-muted company">
-                                <%=exp.company %>
-                            </small>
+                            <!-- <small class="text-muted "> -->
+                                <p class="company"><%=exp.company%></p>
+                            <!-- </small> -->
                         </p>
                         <a href="/experiences/<%=exp._id%>" class="btn btn-primary">Go To Experience</a>
 
@@ -20,3 +26,6 @@
                 <%}%>
         </ul>
     
+<script src="scripts/search.js" async defer>
+    
+</script>

@@ -25,6 +25,8 @@ module.exports.postCreateExperience = async (req, res) => {
   //        throw new ExpressError(500,"Invalid form data");
   //    }
   const experience = new Experience(req.body.Experience);
+  console.log(req.file);
+   experience.resume={url:req.file.path,filename:req.file.filename};
   await experience.save();
 
   res.redirect(`/experiences/${experience._id}`);

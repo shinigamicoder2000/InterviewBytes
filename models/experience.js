@@ -5,6 +5,12 @@ const experienceSchema = new Schema({
     type: String,
     required: true,
   },
+  resume:{
+    
+       url:String,
+       filename:String,
+     
+  },
   company: {
     type: String,
     required: true,
