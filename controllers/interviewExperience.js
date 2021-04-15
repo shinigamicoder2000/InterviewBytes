@@ -18,6 +18,7 @@ module.exports.getCreateExperience = (req, res) => {
   res.render("experiences/new", { title: " Add experience" });
 };
 module.exports.postCreateExperience = async (req, res) => {
+  
   console.log(req.body.username);
   //    if(!req.body.experience)
   //    {

@@ -1,51 +1,41 @@
 const express = require("express");
-const mongoose=require('./config/mongoose');
-const ejs=require('ejs');
+const mongoose = require("./config/mongoose");
+const ejs = require("ejs");
 const app = express();
-const methodOverride=require('method-override');
-const ejsMate=require('ejs-mate');
-const ExpressError=require('./util/ExpressError');
-const port = process.env.LOCAL_PORT;//when deployin to server we will change it to 80
+const methodOverride = require("method-override");
+const ejsMate = require("ejs-mate");
+const ExpressError = require("./util/ExpressError");
+const port = process.env.LOCAL_PORT; //when deployin to server we will change it to 80
 
-console.log('port is ',process.env.LOCAL_PORT);
+console.log("port is ", process.env.LOCAL_PORT);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
 app.use(express.static("./assets"));
 
-
-
-
-
-
 //extract style and scripts from subpages into layout
-
 
 // use express router
 app.use("/", require("./routes"));
 
 // setup view engine--ejs
-app.engine("ejs",ejsMate);
+app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
-
-app.use(methodOverride("_method"));//_method is query parameter to handle requests
+app.use(methodOverride("_method")); //_method is query parameter to handle requests
 
 app.use("/", require("./routes"));
-app.all('*',(req,res,next)=>{
-   next(new ExpressError(404,"Page Not Found"));
+app.all("*", (req, res, next) => {
+  next(new ExpressError(404, "Page Not Found"));
 });
-app.use((err,req,res,next)=>{
-  const {statusCode=500}=err;
-  if(!err.message)
-  {
-    err.message="Oh Something went wrong";
+app.use((err, req, res, next) => {
+  const { statusCode = 500 } = err;
+  if (!err.message) {
+    err.message = "Oh Something went wrong";
   }
-   res.status(statusCode).render('error',{title:'Error',err:err});
-
-})
+  res.status(statusCode).render("error", { title: "Error", err: err });
+});
 app.listen(port || 8000, async function (err) {
   if (err) {
     return console.log(`Error in running the server: ${err}`);

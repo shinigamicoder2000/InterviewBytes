@@ -3,7 +3,7 @@
     <div class="row">
       <h1 class="text-center">New experience</h1>
       <div class="col-6 offset-3">
-          <form action="/experiences/create" method="POST" class="validated-form" novalidate>
+          <form action="/experiences/create" method="POST" class="validated-form" novalidate enctype="multipart/form-data">
             <div class="mb-3">
               <label class="form-label" for="title">Username</label>
               <input class="form-control" type="text" id="title" name="Experience[username]" required>
@@ -26,7 +26,7 @@
                 </div>
               </div>
             
-  
+           <input type="file" name="resume" id="">
               <div class="mb-3">
                   <label class="form-label" for="description">Description</label>
                   <textarea class="form-control" type="text" id="description" name="Experience[experience]" required></textarea>
