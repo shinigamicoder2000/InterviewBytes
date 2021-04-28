@@ -4,9 +4,14 @@ if(process.env.NODE_ENV!=="production")
 }
 console.log(process.env.SECRET);
 const express = require("express");
+const path = require('path');
+const http = require('http');
 const mongoose = require("./config/mongoose");
 const ejs = require("ejs");
 const app = express();
+const socketio = require('socket.io');
+
+const server=http.createServer(app);
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./util/ExpressError");
@@ -41,7 +46,13 @@ app.use((err, req, res, next) => {
   }
   res.status(statusCode).render("error", { title: "Error", err: err });
 });
-app.listen(port || 8000, async function (err) {
+
+
+const chatSockets=require('./config/chat_sockets').chatSockets(server);
+
+
+
+server.listen(port || 8000, async function (err) {
   if (err) {
     return console.log(`Error in running the server: ${err}`);
   }
