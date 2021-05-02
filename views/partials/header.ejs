@@ -31,7 +31,12 @@
               <a class="nav-link" href="/chat">Chat</a>
               <a class="nav-link" href="/experiences/create">New Experience</a>
             <% } %>
-          
+            <% if (!isAuthenticated) { %>
+              <a class="nav-link" href="/login" method="get">login</a>
+              <a class="nav-link" href="/signup" method="get">sign up</a>
+              <% } else { %>
+                
+              <% } %>
           </div>
         </div>
       </div>
