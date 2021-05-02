@@ -35,6 +35,10 @@ exports.getSignup = (req, res, next) => {
 exports.postLogin = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
+  if(email==='' || password === '' ){
+    req.flash('error', 'please fill all the blocks');
+    res.redirect('/login');
+  }
   User.findOne({ email: email })
     .then(user => {
       if (!user) {
@@ -67,7 +71,14 @@ exports.postSignup = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   const confirmPassword = req.body.confirmPassword;
-  
+  if(email==='' || password === '' || confirmPassword === ''){
+    req.flash('error', 'please fill all the blocks');
+    res.redirect('/signup');
+  }
+  if (password != confirmPassword){
+    req.flash('error', 'miss-match password and confirm password');
+    res.redirect('/signup');
+  }
   User.findOne({ email: email })
     .then(userDoc => {
       console.log("hello");
@@ -100,4 +111,3 @@ exports.postLogout = (req, res, next) => {
     res.redirect('/');
   });
 };
-
