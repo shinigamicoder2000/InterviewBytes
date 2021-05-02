@@ -1,7 +1,7 @@
 {
   "name": "interviewbytes",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a web app for helping students of NITJ to gauge the level of preparation required to crack any company which visits the campus.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,19 +17,25 @@
   },
   "homepage": "https://github.com/shinigamicoder2000/InterviewBytes#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "cloudinary": "^1.25.1",
+    "connect-flash": "^0.1.1",
+    "connect-mongodb-session": "^2.4.1",
+    "csurf": "^1.11.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "ejs-mate": "^3.0.0",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.1",
     "joi": "^17.4.0",
     "method-override": "^3.0.0",
     "moment": "^2.29.1",
     "mongoose": "^5.12.1",
     "multer": "^1.4.2",
     "multer-storage-cloudinary": "^4.0.0",
+    "nodemon": "^2.0.7",
     "socket.io": "^4.0.1"
   }
 }
