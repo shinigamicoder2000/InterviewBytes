@@ -51,3 +51,17 @@ const store = new MongoDBStore({
   collection: 'sessions'
 });
 // const csrfProtection = csrf();
+
+app.use(
+  session({
+    secret: 'my secret',
+    resave: false,
+    saveUninitialized: false,
+    store: store
+  })
+  );
+  app.use(flash());
+// app.use(csrfProtection);
+
+
+
