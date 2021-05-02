@@ -29,3 +29,19 @@ const errorController = require('./controllers/error');
 const User = require('./models/user');
 
 const MONGODB_URI ='mongodb+srv://tarun:air1tarun@cluster0.uij0l.mongodb.net/shop?retryWrites=true&w=majority';
+
+app.use(bodyParser.urlencoded({ extended: false }));
+//console.log("port is ", process.env.LOCAL_PORT);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.use(express.static("./assets"));
+
+//extract style and scripts from subpages into layout
+
+// setup view engine--ejs
+app.engine("ejs", ejsMate);
+app.set("view engine", "ejs");
+app.set('views', __dirname + '/views');
+
+
