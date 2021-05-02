@@ -63,5 +63,25 @@ app.use(
   app.use(flash());
 // app.use(csrfProtection);
 
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.session.isLoggedIn;
+//  res.locals.csrfToken = req.csrfToken();
+  next();
+});
+
+app.use(authRoutes);
+
+// use express router
+app.use("/", require("./routes"));
+app.all("*", (req, res, next) => {
+  next(new ExpressError(404, "Page Not Found"));
+});
+app.use((err, req, res, next) => {
+  const { statusCode = 500 } = err;
+  if (!err.message) {
+    err.message = "Oh Something went wrong";
+  }
+  res.status(statusCode).render("error", { title: "Error", err: err });
+});
 
 
