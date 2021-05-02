@@ -84,4 +84,46 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error", { title: "Error", err: err });
 });
 
+app.use((req, res, next) => {
+  if (!req.session.user) {
+    return next();
+  }
+  User.findById(req.session.user._id)
+    .then(user => {
+      req.user = user;
+      next();
+    })
+    .catch(err => console.log(err));
+});
+
+const chatSockets=require('./config/chat_sockets').chatSockets(server);
+
+mongoose
+.connect(MONGODB_URI,{useNewUrlParser: true, useUnifiedTopology: true,useFindAndModify:false})
+.then(result => {
+  server.listen(3000, async function (err) {
+  if (err) {
+    return console.log(`Error in running the server: ${err}`);
+  }
+  // const Experience=require('./models/experience');
+  // const exp=new Experience({
+  //   username:"blah",
+  //   experience:"blah",
+  //   company:"blah blah",
+  //   year:"2018",
+  // });
+  // try{
+  // const exper=await exp.save();
+  // console.log(exper);
+  // }
+  // catch(err)
+  // {
+  //   console.log(err);
+  // }
+  return console.log(`Server fired up on port: ${port}`);
+});
+})
+.catch(err => {
+  console.log(err);
+});
 
