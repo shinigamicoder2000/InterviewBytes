@@ -44,4 +44,10 @@ app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set('views', __dirname + '/views');
 
+app.use(methodOverride("_method")); //_method is query parameter to handle requests
 
+const store = new MongoDBStore({
+  uri: MONGODB_URI,
+  collection: 'sessions'
+});
+// const csrfProtection = csrf();
