@@ -25,7 +25,6 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 // const csrf = require('csurf');
 const flash = require('connect-flash');
 
-const errorController = require('./controllers/error');
 const User = require('./models/user');
 
 const MONGODB_URI ='mongodb+srv://tarun:air1tarun@cluster0.uij0l.mongodb.net/shop?retryWrites=true&w=majority';
