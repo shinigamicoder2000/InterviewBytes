@@ -1,8 +1,8 @@
 module.exports.chatSockets=(server)=>{
     const socketio = require('socket.io');
     const formatMessage = require('../util/messages');
-    const session = require("express-session");
-const passport = require("passport");
+    
+
 
 
 const {
@@ -11,7 +11,7 @@ const {
   userLeave,
   getRoomUsers
 } = require('../util/users');
-const wrap = middleware => (socket, next) => middleware(socket.request, {}, next);
+
 
 
 const io = socketio(server);
