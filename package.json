@@ -4,7 +4,10 @@
   "description": "This is a web app for helping students of NITJ to gauge the level of preparation required to crack any company which visits the campus.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node index.js",
+    "dev":"nodemon index.js"
+
   },
   "repository": {
     "type": "git",
