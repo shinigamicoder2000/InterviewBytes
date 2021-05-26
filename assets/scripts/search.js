@@ -9,9 +9,10 @@ function myFunction() {
   
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < li.length; i++) {
-      cardBody= li[i].getElementsByClassName("card-body")[0];
-      p=cardBody.getElementsByClassName("company")[0];
-      a=p;
+      cardBody= li[i].getElementsByClassName("card_right")[0];
+      detail=cardBody.getElementsByClassName("card_right__details")[0];
+      ul=detail.getElementsByClassName("contain")[0];
+      a=ul.getElementsByClassName('company')[0];
       txtValue = a.textContent || a.innerText;
       console.log(txtValue);
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
