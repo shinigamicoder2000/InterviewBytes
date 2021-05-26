@@ -3,9 +3,11 @@
 
     <h1>   <%=experience.username %></h1>
     <p><%=experience.experience %></p>
-   
+
+     <% if(experience.resume&&experience.resume.url){%>
     <embed src=<%= experience.resume.url %> width="500" height="375" 
     type="application/pdf"  >
+    <%}%>
     
     <footer>
         <a href="/experiences" >Back to Experiences</a>

@@ -26,6 +26,7 @@ module.exports.postCreateExperience = async (req, res) => {
   //    }
   const experience = new Experience(req.body.Experience);
   console.log(req.file);
+  if(req.file)
    experience.resume={url:req.file.path,filename:req.file.filename};
   await experience.save();
 
