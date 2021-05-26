@@ -2,10 +2,15 @@
 <% layout('layouts/boilerplate.ejs') -%>
 <link rel="stylesheet" href="css/card-style.css" />
 
-<h1>All Experiences</h1>
-<br />
-<div class="container">
-  <form class="form-inline">
+
+
+<div class="body">
+  
+  <div class="container" style="margin-left: 5%;">
+    <h1>All Experiences</h1>
+    <br />
+ 
+  <form class="form-inline" style="text-align: center;">
     <i class="fas fa-search" aria-hidden="true"></i>
     <input
       class="form-control form-control-sm ml-3 w-75"
@@ -17,7 +22,6 @@
     />
   </form>
 </div>
-<div class="body">
   <ul id="myUL" class="body">
     <% for(exp of experiences) { %>
 
