@@ -8,7 +8,12 @@ const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
 });
 console.log("yipee");
+
 const socket = io('localhost:3000');
+if(location.hostname!=='localhost')
+{
+  socket=io(location.hostname);
+}
 
 // Join chatroom
 socket.emit('joinRoom', { username, room });
