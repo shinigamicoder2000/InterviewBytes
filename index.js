@@ -53,7 +53,7 @@ const store = new MongoDBStore({
 
 app.use(
   session({
-    secret: 'my secret',
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
     store: store
@@ -64,6 +64,8 @@ app.use(
 
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.session.isLoggedIn;
+  
+  
 //  res.locals.csrfToken = req.csrfToken();
   next();
 });

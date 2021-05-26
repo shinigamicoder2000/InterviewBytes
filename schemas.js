@@ -5,6 +5,7 @@ module.exports.experienceSchema = Joi.object({
     username: Joi.string().required(),
     company: Joi.string().required(),
     year: Joi.string().required(),
+    role: Joi.string().required(),
     experience: Joi.string().required(),
   
   }).required(),

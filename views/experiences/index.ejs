@@ -9,6 +9,7 @@
     <input class="form-control form-control-sm ml-3 w-75" id="inp" onkeyup="myFunction()" type="text" placeholder="Search By Company" aria-label="Search">
   </form>
 </div>
+  <div class="body">
 
         <ul id="myUL" class="body">
             <% for(exp of experiences) { %>
@@ -18,8 +19,8 @@
                       <h1><%=exp.username %></h1>
                       <div class='card_right__details'>
                         <ul class="contain">
-                          <li>Date</li>
-                          <li>Role</li>
+                          <li><%=exp.year %></li>
+                          <li><%=exp.role%></li>
                           <li class="company"><%=exp.company%></li>
                         </ul>
                         <div class='card_right__review'>
@@ -40,7 +41,7 @@
                
         </ul>
    
-
+    </div>
 
     
 <script src="scripts/search.js" async defer>
