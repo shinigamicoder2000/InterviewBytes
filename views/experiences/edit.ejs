@@ -1,47 +1,69 @@
 <% layout('layouts/boilerplate.ejs') -%>
 
-    
-    <div class="row">
-      <h1 class="text-center">Edit experience</h1>
-      <div class="col-6 offset-3">
-        <form action="/experiences/<%=experience._id %>?_method=PUT" method="POST" class="validated-form" novalidate>
-            <div class="mb-3">
-              <label class="form-label" for="title">Username</label>
-              <input class="form-control" type="text" id="title" value="<%=experience.username %>" name="Experience[username]" required>
-              <div class="valid-feedback">
-                    Looks Good
-                </div>
-          </div>
-              <div class="mb-3">
-                  <label class="form-label" for="company">Company</label>
-                  <input class="form-control" type="text" id="company" value="<%=experience.company %>" name="Experience[company]" required>
-                  <div class="valid-feedback">
-                    Looks Good
-                </div>
-              </div>
-              <div class="mb-3">
-                  <label class="form-label" for="year">Year</label>
-                  <input class="form-control" type="text" id="year" value="<%=experience.year %>" name="Experience[year]" required>
-                  <div class="valid-feedback">
-                    Looks Good
-                </div>
-              </div>
-            
-  
-              <div class="mb-3">
-                  <label class="form-label" for="description">Experience</label>
-                  <textarea class="form-control" type="text" id="description" name="Experience[experience]" required><%=experience.experience %></textarea>
-                  <div class="valid-feedback">
-                    Looks Good
-                </div>
-              </div>
-              <div class="mb-3">
-                  <button class="btn btn-success">Edit experience</button>
-              </div>
-          </form>
-         
+<div class="row">
+  <h1 class="text-center">Edit experience</h1>
+  <div class="col-6 offset-3">
+    <form
+      action="/experiences/<%=experience._id %>?_method=PUT"
+      method="POST"
+      class="validated-form"
+      novalidate
+    >
+      <div class="mb-3">
+        <label class="form-label" for="title">Username</label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          value="<%=experience.username %>"
+          name="Experience[username]"
+          required
+        />
+        <div class="valid-feedback">Looks Good</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="company">Company</label>
+        <input
+          class="form-control"
+          type="text"
+          id="company"
+          value="<%=experience.company %>"
+          name="Experience[company]"
+          required
+        />
+        <div class="valid-feedback">Looks Good</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="year">Year</label>
+        <input
+          class="form-control"
+          type="text"
+          id="year"
+          value="<%=experience.year %>"
+          name="Experience[year]"
+          required
+        />
+        <div class="valid-feedback">Looks Good</div>
       </div>
 
-      <a href="/experiences/<%=experience._id %>" >Back to Experience</a>
-
+      <div class="mb-3">
+        <label class="form-label" for="description">Experience</label>
+        <textarea
+          class="form-control"
+          type="text"
+          id="description"
+          name="Experience[experience]"
+          required
+        >
+<%=experience.experience %></textarea
+        >
+        <div class="valid-feedback">Looks Good</div>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-success">Edit experience</button>
+      </div>
+    </form>
   </div>
+
+  <a href="/experiences/<%=experience._id %>">Back to Experience</a>
+</div>

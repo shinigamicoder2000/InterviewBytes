@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>SIGNUP</title>
+<% layout('layouts/boilerplate.ejs') -%>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
-  <body style="background : black;">
+ 
 
     <% if (errorMessage) { %>
           <div class="user-message user-message--error text-center text-info"><%= errorMessage %></div>
@@ -15,7 +11,7 @@
       <% } %>
 
       <div id="SIGNUP" >
-          <h3 class="text-center text-white pt-5">REGISTER </h3>
+          <h3 class="text-center text-black pt-5">REGISTER </h3>
           <div class="container">
               <div id="login-row" class="row justify-content-center align-items-center">
                   <div id="login-column" class="col-md-6">
@@ -23,15 +19,15 @@
                           <form id="login-form" class="form" action="" method="post">
                               <h3 class="text-center text-info">Be a part of InterviewBytes</h3>
                               <div class="form-group">
-                                  <label for="username" class="text-info">Email</label><br>
+                                  <label for="username" class="text-black">Email</label><br>
                                   <input type="email" name="email" id="email" class="form-control">
                               </div>
                               <div class="form-group">
-                                  <label for="password" class="text-info">Password:</label><br>
+                                  <label for="password" class="text-black">Password:</label><br>
                                   <input type="password" name="password" id="password" class="form-control">
                               </div>
                               <div class="form-group">
-                                  <label for="confirmPassword" class="text-info">confirmPassword</label><br>
+                                  <label for="confirmPassword" class="text-black">confirmPassword</label><br>
                                   <input type="text" name="confirmPassword" id="confirmPassword" class="form-control">
                               </div>
                               <div class="form-group">

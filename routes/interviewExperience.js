@@ -13,19 +13,18 @@ const validateExperience = (req, res, next) => {
     next();
   }
 };
-const multer  = require('multer')
-const {storage}=require('../cloudinary');
-const upload = multer({ storage })
+const multer = require("multer");
+const { storage } = require("../cloudinary");
+const upload = multer({ storage });
 router.get("/", catchAsync(interviewExperienceController.getAllExperiences));
 router.get("/create", interviewExperienceController.getCreateExperience);
 router.post(
   "/create",
-  upload.single('resume'),
- 
+  upload.single("resume"),
+
   validateExperience,
-  
+
   catchAsync(interviewExperienceController.postCreateExperience)
-  
 );
 router.get("/:id", catchAsync(interviewExperienceController.getExperience));
 router.get(

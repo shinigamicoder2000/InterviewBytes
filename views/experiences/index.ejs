@@ -1,52 +1,55 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <% layout('layouts/boilerplate.ejs') -%>
-<link rel="stylesheet" href="css/card-style.css">
+<link rel="stylesheet" href="css/card-style.css" />
 
-<h1>All experiences</h1>
-<br>
+<h1>All Experiences</h1>
+<br />
 <div class="container">
-<form class="form-inline ">
+  <form class="form-inline">
     <i class="fas fa-search" aria-hidden="true"></i>
-    <input class="form-control form-control-sm ml-3 w-75" id="inp" onkeyup="myFunction()" type="text" placeholder="Search By Company" aria-label="Search">
+    <input
+      class="form-control form-control-sm ml-3 w-75"
+      id="inp"
+      onkeyup="myFunction()"
+      type="text"
+      placeholder="Search By Company"
+      aria-label="Search"
+    />
   </form>
 </div>
-  <div class="body">
+<div class="body">
+  <ul id="myUL" class="body">
+    <% for(exp of experiences) { %>
 
-        <ul id="myUL" class="body">
-            <% for(exp of experiences) { %>
-             
-                <div class='card' style="max-width: 100%;">
-                    <div class='card_right'>
-                      <h1><%=exp.username %></h1>
-                      <div class='card_right__details'>
-                        <ul class="contain">
-                          <li><%=exp.year %></li>
-                          <li><%=exp.role%></li>
-                          <li class="company"><%=exp.company%></li>
-                        </ul>
-                        <div class='card_right__review' style=" white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;">
-                          <p><%=exp.experience %></p>
-
-                        </div>
-                        <div class='card_right__button'>
-                            <a href="/experiences/<%=exp._id%>" >View Complete Experience</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-        
-                <!-- <a href="/experiences/<%=exp._id %>"><%=exp.username %> Interview Experience </a> -->
-                <%}%>
-
-               
-        </ul>
-   
+    <div class="card" style="max-width: 100%">
+      <div class="card_right">
+        <h1><%=exp.username %></h1>
+        <div class="card_right__details">
+          <ul class="contain">
+            <li><%=exp.year %></li>
+            <li><%=exp.role%></li>
+            <li class="company"><%=exp.company%></li>
+          </ul>
+          <div
+            class="card_right__review"
+            style="
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            "
+          >
+            <p><%=exp.experience %></p>
+          </div>
+          <div class="card_right__button">
+            <a href="/experiences/<%=exp._id%>">View Complete Experience</a>
+          </div>
+        </div>
+      </div>
     </div>
 
-    
-<script src="scripts/search.js" async defer>
-    
-</script>
+    <!-- <a href="/experiences/<%=exp._id %>"><%=exp.username %> Interview Experience </a> -->
+    <%}%>
+  </ul>
+</div>
+
+<script src="scripts/search.js" async defer></script>
