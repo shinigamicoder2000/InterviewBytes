@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <% layout('layouts/boilerplate.ejs') -%>
 <link rel="stylesheet" href="css/card-style.css">
 
@@ -14,7 +15,7 @@
         <ul id="myUL" class="body">
             <% for(exp of experiences) { %>
              
-                <div class='card'>
+                <div class='card' style="max-width: 100%;">
                     <div class='card_right'>
                       <h1><%=exp.username %></h1>
                       <div class='card_right__details'>
