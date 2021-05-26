@@ -1,5 +1,6 @@
 const Experience = require("../models/experience");
 const ExpressError = require("../util/ExpressError");
+const {cloudinary}=require('../cloudinary');
 module.exports.getAllExperiences = async (req, res) => {
   const experiences = await Experience.find({});
   res.render("experiences/index", { title: "All", experiences: experiences });
@@ -50,7 +51,9 @@ module.exports.postEditExperience = async (req, res) => {
 };
 module.exports.deleteExperience = async (req, res) => {
   const id = req.params.id;
+  const exp=await Experience.findById(id);
   await Experience.findByIdAndDelete(id);
-
+  if(exp.resume && exp.resume.filename)
+ await cloudinary.uploader.destroy(exp.resume.filename);
   res.redirect(`/experiences`);
 };
