@@ -23,7 +23,8 @@ module.exports.postCreateExperience = async (req, res) => {
   //    if(!req.body.experience)
   //    {
   //        throw new ExpressError(500,"Invalid form data");
-  //    }
+  //
+
   const experience = new Experience(req.body.Experience);
   console.log(req.file);
   if (req.file)
